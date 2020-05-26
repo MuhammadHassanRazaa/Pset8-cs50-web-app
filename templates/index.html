@@ -1,0 +1,41 @@
+{% extends "layout.html" %} {% block title %} Portfolio {% endblock %} {% block main %}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Symbol</th>
+            <th scope="col">Name</th>
+            <th scope="col">Shares</th>
+            <th scope="col">Price</th>
+            <th scope="col">Total</th>
+        </tr>
+    </thead>
+    <tbody {% for r in purchaces %} <tr>
+        <td>{{ r["Symbol"] }}</td>
+        <td>{{ r["Name"] }}</td>
+        <td>{{ r["Shares"] }}</td>
+        <td>{{ r["Unit Price"] | usd }}</td>
+        <td>{{ r["Total"] | usd }}</td>
+        </tr>
+        {% endfor %}
+
+        <tr class ="last">
+            <td >CASH</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td >{{ cash | usd }}</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+                <td >Total</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{ total | usd }}</td>
+            </tr>
+    </tfoot>
+</table>
+
+{% endblock %}

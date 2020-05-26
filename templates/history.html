@@ -1,0 +1,24 @@
+{% extends "layout.html" %} {% block title %} History {% endblock %} {% block main %}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Symbol</th>
+            <th scope="col">Shares</th>
+            <th scope="col">Price</th>
+            <th scope="col">Transaction Date</th>
+        </tr>
+    </thead>
+    <tbody {% for r in history %} <tr>
+        <td>{{ r["Symbol"] }}</td>
+        <td>{{ r["Share"] }}</td>
+        <td>{{ r["Price"] | usd }}</td>
+        <td>{{ r["Transaction_Date"]  }}</td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% endblock %}
